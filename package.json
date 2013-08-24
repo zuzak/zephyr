@@ -1,0 +1,20 @@
+{
+    "name":"blag",
+    "private":true,
+    "version":"0.0.0",
+    "dependencies":{
+        "winston":"0.7.x",
+        "express":"3.2.4",
+        "marked":"0.2.9"
+    },
+    "config":{
+        "web":{
+            "port":1234
+        },
+        "verbosity":"debug"
+    },
+    "author": {
+        "name": "Douglas Gardner",
+        "email": "douglas@chippy.ch"
+    }
+}
