@@ -5,7 +5,9 @@
     "dependencies":{
         "winston":"0.7.x",
         "express":"3.2.4",
-        "marked":"0.2.9"
+        "marked":"0.2.9",
+        "moment":"*",
+        "jade":"0.35.0"
     },
     "config":{
         "web":{

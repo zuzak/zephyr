@@ -2,6 +2,7 @@ var log = require('./log');
 var fs = require('fs');
 var md = require('marked');
 var config = require('./package.json').config;
+var moment = require('moment');
 var express = require('express');
 
 var app = express();
@@ -23,11 +24,15 @@ app.get("/", function(req, res){
         if(err){
             log.error("Unable to read posts directory!");
         } else {
-            log.debug(files);
+            files.reverse();
             files.forEach(function(file){
                 if((file.substring(file.lastIndexOf('.')+1)) == "md"){
                     data = fs.readFileSync(postsdir+'/'+file,{'encoding':'utf-8'});
-                    body += middle[0] + md(data) + middle[1];
+                    var stat = fs.statSync(postsdir+'/'+file);
+                    var stats = '<span title="' + stat.mtime;
+                    stats += '" class="date">' + moment(stat.mtime).fromNow();
+                    stats += '</span>';
+                    body += middle[0] + stats + md(data) + middle[1];
                     log.info("Rendering " + file);
                 } else {
                     log.info("Skipping " + file + " (not Markdown)");
