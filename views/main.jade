@@ -1,0 +1,46 @@
+!!!5
+html
+  head
+    title #{config.web.header}
+    link(href="http://fonts.googleapis.com/css?family=Bubbler+One",rel="stylesheet")
+    style.
+      body {
+        background-color:#222;
+        color:#eee;
+        font-family:'Bubbler One',sans-serif;
+      }
+      .post {
+        border:1px solid #444;
+        margin:1em;
+        padding:1em;
+      }
+      .post.active, .post:hover {
+        border-color:#666;
+      }
+      h1 {
+        margin-left:1em;
+      }
+      .info {
+        text-align:right;
+        float:right;
+        color:#ccc;
+        font-size:80%;
+      }
+      h2,h3,h4,h5,h6 {
+        display:inline-block;
+        margin:0;
+      }
+      .caption {
+        color:#444;
+      }
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+    script(src="https://raw.github.com/lightbox/jquery-keynav/master/jquery.keynav.js")
+    script.
+      $('h2').keynav();
+  body
+    h1 #{config.web.header}
+    each post, index in posts
+      div.post(id="post#{index}")
+        div.info
+          div.date(title=post.vdate) <span class="caption">Modified</span> #{post.date}
+        !=  post.content
