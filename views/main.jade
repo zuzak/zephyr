@@ -33,10 +33,11 @@ html
       .caption {
         color:#444;
       }
-    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
-    script(src="https://raw.github.com/lightbox/jquery-keynav/master/jquery.keynav.js")
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+    //script(src="https://raw.github.com/lightbox/jquery-keynav/master/jquery.keynav.js")
+    script(src="https://raw.github.com/cakebaker/jquery-jknavigable/master/jquery.jknavigable.js")
     script.
-      $('h2').keynav();
+      $('body').jknavigable();
   body
     h1 #{config.web.header}
     each post, index in posts

@@ -7,12 +7,15 @@
         "express":"3.2.4",
         "marked":"0.2.9",
         "moment":"*",
-        "jade":"0.35.0"
+        "jade":"0.35.0",
+        "rss":"0.2.0"
     },
     "config":{
         "web":{
             "port":1234,
-            "header": "Blog of Cool"
+            "header": "Blog of Cool",
+           "description": "foo",
+           "url": "http://chippy.ch:1234"
         },
         "verbosity":"debug"
     },
