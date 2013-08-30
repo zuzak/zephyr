@@ -24,6 +24,7 @@ app.get("/", function(req, res){
 app.get("/rss", function(req, res){
     log.info("Rendering RSS");
     var posts = getPosts();
+    log.debug(posts);
     var feed = new rss({
         title: config.web.header,
         description: config.web.description,
@@ -32,7 +33,7 @@ app.get("/rss", function(req, res){
     });
     posts.forEach(function(post){
         feed.item({
-            date: post.date,
+            date: post.vdate,
             description: post.content,
             title: post.content.substr(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '')
         });
@@ -51,7 +52,7 @@ function getPosts(){
             log.info("Rendering " + file);
             var post = {
                 content: content,
-                date: moment(stat.mtime).fromNow(),
+                rdate: moment(stat.mtime).fromNow(),
                 vdate: stat.mtime
             };
             posts.push(post);
@@ -61,3 +62,4 @@ function getPosts(){
     });
     return posts;
 }
+

@@ -44,5 +44,5 @@ html
     each post, index in posts
       div.post(id="post#{index}")
         div.info
-          div.date(title=post.vdate) <span class="caption">Modified</span> #{post.date}
+          div.date(title=post.vdate) <span class="caption">Modified</span> #{post.rdate}
         !=  post.content
