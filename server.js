@@ -69,7 +69,7 @@ function getPosts(){
             var content = md(body);
             var stat = fs.statSync(postsdir+'/'+file);
             log.info("Rendering " + file);
-            if('undefned' !== typeof date){
+            if('undefined' == typeof date){
                 date = stat.mtime;
             }
             var post = {
