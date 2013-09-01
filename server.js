@@ -33,7 +33,7 @@ app.get("/rss", function(req, res){
     });
     posts.forEach(function(post){
         feed.item({
-            date: post.vdate,
+            date: post.date,
             description: post.content,
             title: post.content.substr(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '')
         });
@@ -45,15 +45,39 @@ function getPosts(){
     var posts = [];
     var files = fs.readdirSync(postsdir);
     files.reverse();
-    files.forEach(function(file){
+    files.forEach(function(file,index){
+        log.debug(index);
         if((file.substring(file.lastIndexOf('.')+1)) == "md"){
-            content = md(fs.readFileSync(postsdir+'/'+file,{'encoding':'utf-8'}));
+            var body = fs.readFileSync(postsdir+'/'+file,{'encoding':'utf-8'});
+            var split = body.split("\n");
+            body = "";
+            var i;
+            split.forEach(function(line){
+                i++;
+                if(line.charAt(0) == "%"){
+                    try {
+                        var str = line.split("%")[1].replace(/\s+/g,'');
+                        date = new Date(str);
+                        line = "";
+                    } catch(e) {
+                        log.error("Malformed date in " + file);
+                        log.error(e.message);
+                    }
+                }
+                body = body + "\n" + line;
+            });
+            var content = md(body);
             var stat = fs.statSync(postsdir+'/'+file);
             log.info("Rendering " + file);
+            if('undefned' !== typeof date){
+                date = stat.mtime;
+            }
             var post = {
                 content: content,
-                rdate: moment(stat.mtime).fromNow(),
-                vdate: stat.mtime
+                rdate: moment(date).fromNow(),
+                date: date,
+                mdate: stat.mdate,
+                rmdate: moment(stat.mdate).fromNow()
             };
             posts.push(post);
         } else {

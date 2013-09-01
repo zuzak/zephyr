@@ -37,15 +37,10 @@ html
       a {
         color:#87ceeb;
       }
-    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-    //script(src="https://raw.github.com/lightbox/jquery-keynav/master/jquery.keynav.js")
-    script(src="https://raw.github.com/cakebaker/jquery-jknavigable/master/jquery.jknavigable.js")
-    script.
-      $('body').jknavigable();
   body
     h1 #{config.web.header}
     each post, index in posts
       div.post(id="post#{index}")
         div.info
-          div.date(title=post.vdate) <span class="caption">Modified</span> #{post.rdate}
+          div.date(title=post.date) #{post.rdate}
         !=  post.content
