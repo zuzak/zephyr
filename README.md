@@ -17,7 +17,7 @@ example, ext4) do not store the file creation time.
 If the date is not specified, the file modification time will be used.
 
 ## Example
-```markdown
+```md
 ## Hello, world!
 % 1984-04-01
 This is a test post.
