@@ -15,7 +15,8 @@
             "port":1234,
             "header": "Blog of Cool",
            "description": "foo",
-           "url": "http://chippy.ch:1234"
+           "url": "http://chippy.ch:1234",
+           "style":"transport"
         },
         "verbosity":"debug"
     },

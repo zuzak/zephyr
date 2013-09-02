@@ -12,6 +12,8 @@ var app = express();
 app.listen(config.web.port);
 log.info("Listening on port " + config.web.port);
 
+app.use(express.static(__dirname + '/public'));
+
 log.info("Starting up!");
 
 var postsdir = 'posts';
