@@ -5,9 +5,9 @@ html
     link(href="#{config.web.style}.css",rel="stylesheet")
     link(rel="alternate",type="application/rss+xml", href="rss")
   body
-    h1 #{config.web.header}
+    h1 <a href="/">#{config.web.header}</a>
     each post, index in posts
       div.post(id="post#{index}")
         div.info
-          div.date(title=post.date) #{post.rdate}
+          a.date(title=post.date,href="/#{post.id}") #{post.rdate}
         !=  post.content

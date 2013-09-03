@@ -20,13 +20,29 @@ var postsdir = 'posts';
 
 app.get("/", function(req, res){
     var posts = getPosts();
+    posts.reverse();
     res.send(jade.renderFile("views/main.jade",{posts:posts,config:config}));
+});
+
+app.get("/:postid", function(req, res){
+    var posts = getPosts();
+    var render = [];
+    posts.forEach(function(post,index){
+        if(post.id == req.params.postid){
+            render.push(post);
+            return;
+        }
+    });
+    if(render.length !== 0){
+        res.send(jade.renderFile("views/main.jade",{posts:render,config:config}));
+    } else {
+        res.send("nope");
+    }
 });
 
 app.get("/rss", function(req, res){
     log.info("Rendering RSS");
     var posts = getPosts();
-    log.debug(posts);
     var feed = new rss({
         title: config.web.header,
         description: config.web.description,
@@ -37,6 +53,7 @@ app.get("/rss", function(req, res){
         feed.item({
             date: post.date,
             description: post.content,
+            // TODO: replace with something nicer
             title: post.content.substr(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '')
         });
     });
@@ -46,7 +63,6 @@ app.get("/rss", function(req, res){
 function getPosts(){
     var posts = [];
     var files = fs.readdirSync(postsdir);
-    files.reverse();
     files.forEach(function(file,index){
         log.debug(index);
         if((file.substring(file.lastIndexOf('.')+1)) == "md"){
@@ -79,7 +95,8 @@ function getPosts(){
                 rdate: moment(date).fromNow(),
                 date: date,
                 mdate: stat.mdate,
-                rmdate: moment(stat.mdate).fromNow()
+                rmdate: moment(stat.mdate).fromNow(),
+                id: file.slice(0,-3)
             };
             posts.push(post);
         } else {

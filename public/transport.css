@@ -32,3 +32,7 @@ a:active {
     outline: 3px solid #2288ee;
     background-color: #2288ee;
 }
+h1 a {
+    color:inherit;
+    text-decoration:inherit;
+}
