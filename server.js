@@ -26,38 +26,38 @@ app.get("/", function(req, res){
 
 app.get("/:postid", function(req, res){
     var posts = getPosts();
-    var render = [];
-    posts.forEach(function(post,index){
-        if(post.id == req.params.postid){
-            render.push(post);
-            return;
-        }
-    });
-    if(render.length !== 0){
-        res.send(jade.renderFile("views/main.jade",{posts:render,config:config}));
-    } else {
-        res.send("nope");
-    }
-});
-
-app.get("/rss", function(req, res){
-    log.info("Rendering RSS");
-    var posts = getPosts();
-    var feed = new rss({
-        title: config.web.header,
-        description: config.web.description,
-        feed_url: config.web.url + '/rss',
-        site_url: config.web.url
-    });
-    posts.forEach(function(post){
-        feed.item({
-            date: post.date,
-            description: post.content,
-            // TODO: replace with something nicer
-            title: post.content.substr(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, '')
+    if(req.params.postid == "rss"){
+        log.info("Rendering RSS");
+        var feed = new rss({
+            title: config.web.header,
+            description: config.web.description,
+            feed_url: config.web.url + '/rss',
+            site_url: config.web.url
         });
-    });
-    res.send(feed.xml(true));
+        posts.forEach(function(post){
+            feed.item({
+                date: post.date,
+                description: post.content,
+                // TODO: replace with something nicer
+                title: post.content.substr(0, post.content.indexOf('\n')).replace(/<(?:.|\n)*?>/gm, ''),
+                url: config.web.url + '/' + post.id
+            });
+        });
+        res.send(feed.xml(true));
+    } else {
+        var render = [];
+        posts.forEach(function(post,index){
+            if(post.id == req.params.postid){
+                render.push(post);
+                return;
+            }
+        });
+        if(render.length !== 0){
+            res.send(jade.renderFile("views/main.jade",{posts:render,config:config}));
+        } else {
+            res.send("nope");
+        }
+    }
 });
 
 function getPosts(){
