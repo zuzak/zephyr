@@ -1,7 +1,7 @@
 {
     "name":"zephyr"
     "private":true,
-    "version":"1.0.0",
+    "version":"0.1.0",
     "dependencies":{
         "winston":"0.7.x",
         "express":"3.2.4",
