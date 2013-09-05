@@ -1,7 +1,7 @@
 {
-    "name":"blag",
+    "name":"zephyr"
     "private":true,
-    "version":"0.0.0",
+    "version":"1.0.0",
     "dependencies":{
         "winston":"0.7.x",
         "express":"3.2.4",
@@ -13,9 +13,8 @@
     "config":{
         "web":{
             "port":1234,
-            "header": "Blog of Cool",
-           "description": "foo",
-           "url": "http://chippy.ch:1234",
+            "header": "Zuzak",
+           "url": "http://blog.chippy.ch",
            "style":"transport"
         },
         "verbosity":"debug"

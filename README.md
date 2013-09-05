@@ -1,4 +1,4 @@
-# blag
+# zephyr
 This is a basic blogging software, based on Markdown files in the ``posts``
 directory.
 
@@ -6,6 +6,9 @@ To create a post, create a new ``.md`` file in the ``posts`` directory.
 
 Posts will be displayed in reverse ASCIIbetical order: so you should call the
 first post ``000-foo.md``, the second ``001-bar.md``, and so on.
+
+A zephyr breeze is a westerly wind; the Greek god of which was Zephyrus
+(and the Roman, Favonicus). It serves as a suitably pretentious project name.
 
 ## Dates
 You should add the publication date and time in
