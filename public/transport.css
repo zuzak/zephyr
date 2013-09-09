@@ -45,3 +45,6 @@ blockquote {
     padding-left:5px;
     font-size:80%;
 }
+h2 {
+    display:inline;
+}
