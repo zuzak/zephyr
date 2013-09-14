@@ -1,51 +1,51 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(http://fonts.googleapis.com/css?family=Gudea:400,400italic,700);
 body {
-    background-color:#eee;
-    font-family:'Gudea','Roboto',sans-serif;
-    font-weight:300;
+  background-color: #eee;
+  font-family: 'Gudea', 'Roboto', sans-serif;
+  font-weight: 300;
 }
 h1 {
-    border-bottom: 2px solid #2E8ACA;
-    max-width:720px;
-    margin:1em auto 0.5em;
-    text-align:center;
+  border-bottom: 2px solid #2E8ACA;
+  max-width: 720px;
+  margin: 1em auto 0.5em;
+  text-align: center;
 }
 .post {
-    background-color:#fff;
-    border:1px solid #ddd;
-    margin:1em auto;
-    padding:2em;
-    max-width:720px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin: 1em auto;
+  padding: 2em;
+  max-width: 720px;
 }
 .info {
-    font-style:italic;
-    float:right;
+  font-style: italic;
+  float: right;
 }
 a {
-    color: #2288ee;
+  color: #2288ee;
 }
 a:hover {
-    color: #003399;
+  color: #003399;
 }
 a:active {
-    color: #000;
-    outline: 3px solid #2288ee;
-    background-color: #2288ee;
+  color: #000;
+  outline: 3px solid #2288ee;
+  background-color: #2288ee;
 }
 h1 a {
-    color:inherit;
-    text-decoration:inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
 
 blockquote {
-    background-color:#fafafa;
-    border:1px solid #ddd;
-    border-left-color:#2288ee;
-    border-left-width:2px;
-    padding-left:5px;
-    font-size:80%;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-left-color: #2288ee;
+  border-left-width: 2px;
+  padding-left: 5px;
+  font-size: 80%;
 }
 h2 {
-    display:inline;
+  display: inline;
 }
