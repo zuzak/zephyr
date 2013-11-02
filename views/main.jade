@@ -11,7 +11,11 @@ html
   body
     h1 <a href="/">#{config.web.header}</a>
     each post, index in posts
-      div.post(id="post#{index}")
+      div.post(id="post#{index}",itemscope,itemtype="http://schema.org/BlogPosting")
         div.info
           a.date(title=post.date,href="/#{post.id}") #{post.rdate}
-        !=  post.content
+          - var wc = post.content.split(" ").length
+          meta(itemprop="wordCount",content=wc)
+          meta(itemprop="dateModified",content=post.date)
+        div.postbody(itemprop="articleBody")
+          !=  post.content

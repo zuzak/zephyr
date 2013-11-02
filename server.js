@@ -13,6 +13,7 @@ app.listen(config.web.port)
 log.info("Listening on port " + config.web.port)
 
 app.use(express.static(__dirname + '/public'))
+app.set('view options', { pretty: true })
 
 log.info("Starting up!")
 
@@ -21,7 +22,7 @@ var postsdir = 'posts'
 app.get("/", function(req, res){
   var posts = getPosts()
   posts.reverse()
-  res.send(jade.renderFile("views/main.jade",{posts:posts,config:config}))
+  res.send(jade.renderFile("views/main.jade",{pretty:true,posts:posts,config:config}))
 });
 
 app.get("/:postid", function(req, res){
