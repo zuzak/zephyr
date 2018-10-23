@@ -3,8 +3,8 @@
     "private":true,
     "version":"0.1.0",
     "dependencies":{
-        "winston":"0.7.x",
-        "express":"3.2.4",
+        "winston":"0.8.0",
+        "express":"4.15.5",
         "marked":"0.2.9",
         "moment":"*",
         "jade":"0.35.0",
