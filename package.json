@@ -7,7 +7,7 @@
         "express":"3.2.4",
         "marked":"0.2.9",
         "moment":"*",
-        "jade":"0.35.0",
+        "jade":"1.8.0",
         "rss":"0.2.0"
     },
     "config":{
