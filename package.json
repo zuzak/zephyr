@@ -3,11 +3,11 @@
     "private":true,
     "version":"0.1.0",
     "dependencies":{
-        "winston":"0.7.x",
+        "winston":"3.3.0",
         "express":"3.2.4",
         "marked":"0.2.9",
         "moment":"*",
-        "jade":"0.35.0",
+        "jade":"1.8.0",
         "rss":"0.2.0"
     },
     "config":{
